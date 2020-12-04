@@ -5,33 +5,18 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.net.*;
-import javafx.scene.shape.circle.*;
-
-
 
 public class Main extends Application {
-    private Object KeyCode;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //Drawing a Circle
-        //Circle circle = new Circle ();
-
-        //Setting the properties of the circle
-        Circle.setCenterX (300);
-        Circle.setCenterY(135);
-        Circle.setRadius(100);
-
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.setScene(scene);
+        primaryStage.setTitle("Drone Simulator");
+        Scene scene = new Scene(root, 600, 675);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -112,8 +97,6 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        new ServerThread().start();
-
         launch(args);
     }
 }

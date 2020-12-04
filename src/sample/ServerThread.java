@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
-import java.nio.channels.DatagramChannel;
-import java.util.function.DoubleToIntFunction;
 
 public class ServerThread extends Thread {
+
+    public Controller controller;
+
     @Override
     public void run() {
         System.out.println("Starting Server");
@@ -30,6 +31,31 @@ public class ServerThread extends Thread {
                 // get message from packet
                 String message = new String(packet.getData());
                 System.out.println(message);
+
+                if (message.equals("UP")){
+                    controller.y = controller.y-10;
+                    controller.moveCircle(controller.circle);
+
+
+                }
+                if (message.equals("DOWN")){
+                    controller.y = controller.y+10;
+                    controller.moveCircle(controller.circle);
+
+
+                }
+                if (message.equals("LEFT")){
+                    controller.x = controller.x-10;
+                    controller.moveCircle(controller.circle);
+
+
+                }
+                if (message.equals("RIGHT")){
+                    controller.x = controller.x+10;
+                    controller.moveCircle(controller.circle);
+
+
+                }
             }
         } catch (SocketException e) {
             System.out.println("+++ SORRY COULD NOT CREATE SOCKET ON PORT 5000 +++");
