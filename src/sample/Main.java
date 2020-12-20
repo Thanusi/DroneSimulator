@@ -6,9 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.*;
+//import javafx.scene.Group;
+//import javafx.scene.paint.Color;
 
 public class Main extends Application {
 
@@ -24,7 +27,7 @@ public class Main extends Application {
                     try {
                         DatagramSocket socket = new DatagramSocket();
                         String mesasge = "UP";
-                        DatagramPacket packet = new DatagramPacket(mesasge.getBytes(), mesasge.length(), InetAddress.getByName("127.0.0.1"), 8000);
+                        DatagramPacket packet = new DatagramPacket(mesasge.getBytes(), mesasge.length(), InetAddress.getByName("127.0.0.1"), 4000);
                         socket.send(packet);
 
                     } catch (SocketException e) {
@@ -35,14 +38,14 @@ public class Main extends Application {
                     catch (IOException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("UP");
+                    //System.out.println("UP");
                 }
 
                 if (event.getCode() == javafx.scene.input.KeyCode.S){
                     try {
                         DatagramSocket socket = new DatagramSocket();
                         String mesasge = "DOWN";
-                        DatagramPacket packet = new DatagramPacket(mesasge.getBytes(), mesasge.length(), InetAddress.getByName("127.0.0.1"), 8000);
+                        DatagramPacket packet = new DatagramPacket(mesasge.getBytes(), mesasge.length(), InetAddress.getByName("127.0.0.1"), 4000);
                         socket.send(packet);
 
                     } catch (SocketException e) {
@@ -53,13 +56,13 @@ public class Main extends Application {
                     catch (IOException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("DOWN");
+                    //System.out.println("DOWN");
                 }
                 if (event.getCode() == javafx.scene.input.KeyCode.A){
                     try {
                         DatagramSocket socket = new DatagramSocket();
                         String mesasge = "LEFT";
-                        DatagramPacket packet = new DatagramPacket(mesasge.getBytes(), mesasge.length(), InetAddress.getByName("127.0.0.1"), 8000);
+                        DatagramPacket packet = new DatagramPacket(mesasge.getBytes(), mesasge.length(), InetAddress.getByName("127.0.0.1"), 4000);
                         socket.send(packet);
 
                     } catch (SocketException e) {
@@ -70,13 +73,13 @@ public class Main extends Application {
                     catch (IOException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("LEFT");
+                    //System.out.println("LEFT");
                 }
                 if (event.getCode() == javafx.scene.input.KeyCode.D){
                     try {
                         DatagramSocket socket = new DatagramSocket();
                         String mesasge = "RIGHT";
-                        DatagramPacket packet = new DatagramPacket(mesasge.getBytes(), mesasge.length(), InetAddress.getByName("127.0.0.1"), 8000);
+                        DatagramPacket packet = new DatagramPacket(mesasge.getBytes(), mesasge.length(), InetAddress.getByName("127.0.0.1"), 4000);
                         socket.send(packet);
 
                     } catch (SocketException e) {
@@ -87,7 +90,7 @@ public class Main extends Application {
                     catch (IOException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("RIGHT");
+                    //System.out.println("RIGHT");
                 }
             }
         });
@@ -98,5 +101,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+     }
     }
-}
+
+

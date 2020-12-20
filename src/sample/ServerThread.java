@@ -13,9 +13,10 @@ public class ServerThread extends Thread {
     public void run() {
         System.out.println("Starting Server");
 
+
         try {
             // creating socket
-            DatagramSocket socket = new DatagramSocket(5000);
+            DatagramSocket socket = new DatagramSocket(8000);
 
             while (true){
 
@@ -32,41 +33,33 @@ public class ServerThread extends Thread {
                 String message = new String(packet.getData());
                 System.out.println(message);
 
-                if (message.equals("UP")){
-                    controller.y = controller.y-10;
+                if (message.contains("UP")){
+                    controller.y = controller.y -10;
                     controller.moveCircle(controller.circle);
+                    }
 
-
+                if (message.contains("DOWN")){
+                    controller.y = controller.y +10;
+                    controller.moveCircle(controller.circle);
                 }
-                if (message.equals("DOWN")){
-                    controller.y = controller.y+10;
+
+                if (message.contains("LEFT")){
+                    controller.x = controller.x -10;
                     controller.moveCircle(controller.circle);
-
-
                 }
-                if (message.equals("LEFT")){
-                    controller.x = controller.x-10;
+
+                if (message.contains("RIGHT")){
+                    controller.x = controller.x + 10;
                     controller.moveCircle(controller.circle);
-
-
-                }
-                if (message.equals("RIGHT")){
-                    controller.x = controller.x+10;
-                    controller.moveCircle(controller.circle);
-
-
                 }
             }
+
         } catch (SocketException e) {
-            System.out.println("+++ SORRY COULD NOT CREATE SOCKET ON PORT 5000 +++");
+            System.out.println("SORRY COULD NOT CREATE SOCKET");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
+      }
     }
-}
-
 
